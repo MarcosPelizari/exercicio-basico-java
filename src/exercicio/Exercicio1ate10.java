@@ -2,9 +2,6 @@ package exercicio;
 
 import scanner.InputScanner;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Exercicio1ate10 {
 
     private InputScanner inputScanner;
@@ -95,9 +92,22 @@ public class Exercicio1ate10 {
     }
 
     public void exercicio08() {
-        List<Integer> listaNumeros = new ArrayList<>();
-        listaNumeros.add(inputScanner.lerInteiro("Por favor digite um número inteiro: "));
-        listaNumeros.add(inputScanner.lerInteiro("Por favor digite o próximo número inteiro: "));
-        listaNumeros.add(inputScanner.lerInteiro("Por favor digite o último número inteiro: "));
+        int[] listaNumeros = new int[3];
+        listaNumeros[0] = inputScanner.lerInteiro("Por favor digite um número inteiro: ");
+        listaNumeros[1] = inputScanner.lerInteiro("Por favor digite o próximo número inteiro: ");
+        listaNumeros[2] = inputScanner.lerInteiro("Por favor digite o último número inteiro: ");
+
+        for (int i = 0; i < listaNumeros.length - 1; i++) {
+            for (int j = 0; j < listaNumeros.length - i - 1; j++) {
+                if (listaNumeros[j] < listaNumeros[j + 1]) {
+                    int temp = listaNumeros[j];
+                    listaNumeros[j] = listaNumeros[j + 1];
+                    listaNumeros[j + 1] = temp;
+                }
+            }
+        }
+        for (int i = 0; i < listaNumeros.length; i++) {
+            System.out.println(listaNumeros[i]);
+        }
     }
 }
