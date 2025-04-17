@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         InputScanner inputScanner = new InputScanner();
         Exercicio1ate10 exercicio = new Exercicio1ate10(inputScanner);
-        exercicio.exercicio06();
+        exercicio.exercicio08();
 
 
     }
