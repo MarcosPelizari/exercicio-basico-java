@@ -2,6 +2,8 @@ package exercicio;
 
 import scanner.InputScanner;
 
+import java.text.DecimalFormat;
+
 public class Exercicio1ate10 {
 
     private InputScanner inputScanner;
@@ -118,5 +120,22 @@ public class Exercicio1ate10 {
             System.out.println(listaNumeros[i]);
         }
         return listaNumeros;
+    }
+
+    public String exercicio09() {
+        int peso = inputScanner.lerInteiro("Por favor digite o seu peso: ");
+        double altura = inputScanner.lerDouble("Por favor digite a sua altura: ");
+
+        double imc = peso / (altura * altura);
+        DecimalFormat df = new DecimalFormat("#.00");
+        return df.format(imc);
+    }
+
+    public String exercicio10() {
+        double nota1 = inputScanner.lerDouble("Por favor informe a primeira nota: ");
+        nota1 += inputScanner.lerDouble("Por favor informe a segunda nota: ");
+        nota1 += inputScanner.lerDouble("Por favor informe a terceira nota: ");
+
+        return new DecimalFormat("#.00").format(nota1/3);
     }
 }
