@@ -2,6 +2,7 @@ package exercicio;
 
 import scanner.InputScanner;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class Exercicio1ate10 {
@@ -61,28 +62,29 @@ public class Exercicio1ate10 {
         return resultado;
     }
 
-    public void exercicio04() {
+    public String exercicio04() {
         int numero = inputScanner.lerInteiro("Digite um número inteiro: ");
 
-        System.out.println("O número anterior ao informado é " + (numero - 1) +" e o número posterior é " + (numero + 1));
+        return "O número anterior ao informado é " + (numero - 1) +" e o número posterior é " + (numero + 1);
     }
 
-    public double exercicio05() {
+    public String exercicio05() {
         double salario = inputScanner.lerDouble("Por favor informe o seu salário: ");
         double salarioMinimo = 1293.20;
 
         double quantidadeSalarioMinimo = salario / salarioMinimo;
 
-        System.out.printf("Você ganha %.2f salários mínimos", quantidadeSalarioMinimo);
-        return quantidadeSalarioMinimo;
+        String mensagem = String.format("Você ganha %.2f salários mínimos", quantidadeSalarioMinimo);
+
+        return mensagem;
     }
 
-    public double exercicio06() {
+    public String exercicio06() {
         int number = inputScanner.lerInteiro("Digite um número inteiro: ");
 
         double reajuste = (number + (number * 0.05));
-        System.out.println("O valor informado foi reajustado em 5% e ficou com o valor de " + reajuste);
-        return reajuste;
+
+        return "O valor informado foi reajustado em 5% e ficou com o valor de " + reajuste;
     }
 
     public boolean exercicio07() {
@@ -132,10 +134,49 @@ public class Exercicio1ate10 {
     }
 
     public String exercicio10() {
-        double nota1 = inputScanner.lerDouble("Por favor informe a primeira nota: ");
-        nota1 += inputScanner.lerDouble("Por favor informe a segunda nota: ");
-        nota1 += inputScanner.lerDouble("Por favor informe a terceira nota: ");
+        double notaAluno = inputScanner.lerDouble("Por favor informe a primeira nota: ");
+        notaAluno += inputScanner.lerDouble("Por favor informe a segunda nota: ");
+        notaAluno += inputScanner.lerDouble("Por favor informe a terceira nota: ");
 
-        return new DecimalFormat("#.00").format(nota1/3);
+        return new DecimalFormat("#.00").format(notaAluno/3);
+    }
+
+    public String exercicio11() {
+        double notaAluno = inputScanner.lerDouble("Por favor informe a primeira nota do aluno: ");
+        notaAluno += inputScanner.lerDouble("Por favor informe a segunda nota do aluno: ");
+        notaAluno += inputScanner.lerDouble("Por favor informe a terceira nota do aluno: ");
+        notaAluno += inputScanner.lerDouble("Por favor informe a quarta nota do aluno: ");
+
+        double media = notaAluno / 4;
+
+        if (media >= 7) {
+            return "Aluno Aprovado";
+        } else {
+            return "Aluno reprovado";
+        }
+    }
+
+    public BigDecimal exercicio12() {
+        BigDecimal valorProduto = inputScanner.lerBigDecimal("Escaneie o código de barras para identificar o valor do produto: ");
+        String formaPagamento = inputScanner.lerString("Informe a forma de pagamento (total ou parcelado): ").toLowerCase();
+
+        if (formaPagamento.equals("total")) {
+            BigDecimal desconto = valorProduto.multiply(BigDecimal.valueOf(0.15));
+            valorProduto = valorProduto.subtract(desconto);
+            return valorProduto;
+        } else if (formaPagamento.equals("parcelado")) {
+            int quantidadeParcelas = inputScanner.lerInteiro("Quantas parcelas deseja fazer?");
+            if (quantidadeParcelas <= 3) {
+                BigDecimal valorParcela = valorProduto.divide(BigDecimal.valueOf(quantidadeParcelas),2,BigDecimal.ROUND_HALF_UP);
+                return valorParcela;
+            } else {
+                BigDecimal juros = valorProduto.multiply(BigDecimal.valueOf(0.10));
+                BigDecimal valorComJuros = valorProduto.add(juros);
+                BigDecimal valorParcela = valorComJuros.divide(BigDecimal.valueOf(quantidadeParcelas),2,BigDecimal.ROUND_HALF_UP);
+                return valorParcela
+                        ;
+            }
+        }
+        return valorProduto;
     }
 }
