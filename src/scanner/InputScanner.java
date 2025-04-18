@@ -1,5 +1,6 @@
 package scanner;
 
+import java.math.BigDecimal;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -17,10 +18,12 @@ public class InputScanner {
         while (tentativas < maxTentativas) {
             try {
                 System.out.println(mensagem);
-                return scanner.nextInt();
+                int numeroRetorno = scanner.nextInt();
+                scanner.nextLine();
+                return numeroRetorno;
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Por favor digite um número Inteiro.");
-                scanner.nextInt();
+                scanner.nextLine();
                 tentativas++;
             }
         }
@@ -32,10 +35,13 @@ public class InputScanner {
         while (tentativas < maxTentativas) {
             try {
                 System.out.println(mensagem);
-                return scanner.nextDouble();
+                Double doubleRetorno = scanner.nextDouble();
+                scanner.nextLine();
+                return doubleRetorno;
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Por favor digite um número Decimal.");
-                scanner.nextDouble();
+                scanner.nextLine();
+                tentativas++;
             }
         }
         System.out.println("Número máximo de tentativas atingido.");
@@ -46,14 +52,48 @@ public class InputScanner {
         while (tentativas < maxTentativas) {
             try {
                 System.out.println(mensagem);
-                return scanner.nextBoolean();
+                boolean booleanRetorno = scanner.nextBoolean();
+                scanner.nextLine();
+                return booleanRetorno;
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Por favor, digite 'true' ou 'false'.");
-                scanner.nextBoolean();
+                scanner.nextLine();
+                tentativas++;
             }
         }
         System.out.println("Número máximo de tentativas atingido.");
         return false;
+    }
+
+    public BigDecimal lerBigDecimal(String mensagem) {
+        while (tentativas < maxTentativas) {
+            try {
+                System.out.println(mensagem);
+                BigDecimal valor = scanner.nextBigDecimal();
+                scanner.nextLine();
+                return valor;
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida.");
+                scanner.nextLine();
+                tentativas++;
+            }
+        }
+        System.out.println("Número máximo de tentativas atingido.");
+        return null;
+    }
+
+    public String lerString(String mensagem) {
+        while (tentativas < maxTentativas) {
+            try {
+                System.out.println(mensagem);
+                return scanner.nextLine();
+            } catch (InputMismatchException e) {}
+            System.out.println("Entrada inválida.");
+            scanner.nextLine();
+            tentativas++;
+        }
+        System.out.println("Número máximo de tentativas atingido.");
+        return null;
     }
 
     public void fecharScanner() {
