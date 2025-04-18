@@ -173,7 +173,8 @@ public class Exercicio1ate10 {
                 BigDecimal juros = valorProduto.multiply(BigDecimal.valueOf(0.10));
                 BigDecimal valorComJuros = valorProduto.add(juros);
                 BigDecimal valorParcela = valorComJuros.divide(BigDecimal.valueOf(quantidadeParcelas),2,BigDecimal.ROUND_HALF_UP);
-                return valorParcela;
+                return valorParcela
+                        ;
             }
         }
         return valorProduto;
