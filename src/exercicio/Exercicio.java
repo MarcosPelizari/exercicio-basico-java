@@ -1,15 +1,17 @@
 package exercicio;
 
 import scanner.InputScanner;
+import service.Pagamento;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
-public class Exercicio1ate10 {
+public class Exercicio {
 
     private InputScanner inputScanner;
+    private Pagamento pagamento;
 
-    public Exercicio1ate10(InputScanner inputScanner) {
+    public Exercicio(InputScanner inputScanner) {
         this.inputScanner = inputScanner;
     }
 
@@ -157,26 +159,22 @@ public class Exercicio1ate10 {
     }
 
     public BigDecimal exercicio12() {
-        BigDecimal valorProduto = inputScanner.lerBigDecimal("Escaneie o código de barras para identificar o valor do produto: ");
-        String formaPagamento = inputScanner.lerString("Informe a forma de pagamento (total ou parcelado): ").toLowerCase();
+        Pagamento pagamento = new Pagamento(0.15, 0.1);
 
-        if (formaPagamento.equals("total")) {
-            BigDecimal desconto = valorProduto.multiply(BigDecimal.valueOf(0.15));
-            valorProduto = valorProduto.subtract(desconto);
-            return valorProduto;
-        } else if (formaPagamento.equals("parcelado")) {
+        BigDecimal valorProduto = inputScanner.lerBigDecimal("Escaneie o código de barras para identificar o valor do produto: ");
+        int formaPagamento = inputScanner.lerInteiro("Informe a forma de pagamento " +
+                "(1. total ou 2. parcelado): ");
+
+        if (formaPagamento == 1) {
+            return pagamento.pagamentoTotal(valorProduto);
+        } else if (formaPagamento == 2) {
             int quantidadeParcelas = inputScanner.lerInteiro("Quantas parcelas deseja fazer?");
-            if (quantidadeParcelas <= 3) {
-                BigDecimal valorParcela = valorProduto.divide(BigDecimal.valueOf(quantidadeParcelas),2,BigDecimal.ROUND_HALF_UP);
-                return valorParcela;
-            } else {
-                BigDecimal juros = valorProduto.multiply(BigDecimal.valueOf(0.10));
-                BigDecimal valorComJuros = valorProduto.add(juros);
-                BigDecimal valorParcela = valorComJuros.divide(BigDecimal.valueOf(quantidadeParcelas),2,BigDecimal.ROUND_HALF_UP);
-                return valorParcela
-                        ;
-            }
+            BigDecimal valorParcela = pagamento.pagamentoParcelado(valorProduto, quantidadeParcelas);
+            System.out.println("O valor das parcelas ficou em " + valorParcela);
+            return valorParcela;
+        } else {
+            System.out.println("Opção selecionada inválida.");
+            return valorProduto;
         }
-        return valorProduto;
     }
 }
