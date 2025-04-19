@@ -1,4 +1,4 @@
-import exercicio.Exercicio1ate10;
+import exercicio.Exercicio;
 import scanner.InputScanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -6,7 +6,7 @@ import scanner.InputScanner;
 public class Main {
     public static void main(String[] args) {
         InputScanner inputScanner = new InputScanner();
-        Exercicio1ate10 exercicio = new Exercicio1ate10(inputScanner);
+        Exercicio exercicio = new Exercicio(inputScanner);
 //        exercicio.exercicio09();
         System.out.println(exercicio.exercicio12());
 
