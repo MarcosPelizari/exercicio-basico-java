@@ -2,14 +2,15 @@ package exercicio;
 
 import scanner.InputScanner;
 import service.Pagamento;
+import service.Triangulo;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 
 public class Exercicio {
 
     private InputScanner inputScanner;
-    private Pagamento pagamento;
 
     public Exercicio(InputScanner inputScanner) {
         this.inputScanner = inputScanner;
@@ -92,6 +93,7 @@ public class Exercicio {
     public boolean exercicio07() {
         boolean booleanA = inputScanner.lerBoolean("Digite o Primeiro valor booleano inteiro: ");
         boolean booleanB = inputScanner.lerBoolean("Digite o Segundo valor booleano inteiro: ");
+
 
         if (booleanA == true && booleanB == true) {
             System.out.println("Ambos sào VERDADEIROS.");
@@ -176,5 +178,52 @@ public class Exercicio {
             System.out.println("Opção selecionada inválida.");
             return valorProduto;
         }
+    }
+
+    public String exercicio13() {
+        String nome = inputScanner.lerString("Por favor informe seu nome: ");
+        int idade = inputScanner.lerInteiro("Por favor digite sua idade: ");
+
+        if (idade < 18) {
+            return "Olá " + nome + ". Você é menor de idade.";
+        } else {
+            return "Olá " + nome + ". Você já é maior de idade.";
+        }
+    }
+
+    public String exercicio14() {
+        int valorA = inputScanner.lerInteiro("Por favor digite um valor inteiro");
+        int valorB = inputScanner.lerInteiro("Por favor digite outro valor inteiro");
+
+        int temp = valorA;
+        valorA = valorB;
+        valorB = temp;
+
+        return valorA + " " + valorB;
+    }
+
+    public String exercicio15() {
+        int anoNascimento = inputScanner.lerInteiro("Por favor digite o ano em que você nasceu: ");
+        LocalDate date = LocalDate.now().minusYears(anoNascimento);
+
+        int year = date.getYear();
+        int month = date.getMonthValue();
+        int dayMonth = date.getDayOfMonth();
+
+        return String.format("Você já viveu %d anos, %d meses e %d dias", year, month,dayMonth);
+    }
+
+    public String exercicio16() {
+        int ladoUmTriangulo = inputScanner.lerInteiro("Por favor informe o primeiro lado do triangulo: ");
+        int ladoDoisTriangulo = inputScanner.lerInteiro("Por favor informe o segundo lado do triangulo: ");
+        int ladoTresTriangulo = inputScanner.lerInteiro("Por favor informe o ultimo lado do triangulo: ");
+
+        Triangulo triangulo = new Triangulo(ladoUmTriangulo, ladoDoisTriangulo, ladoTresTriangulo);
+
+        return triangulo.tipoTriangulo();
+    }
+
+    public void fecharScanner() {
+        inputScanner.fecharScanner();
     }
 }
