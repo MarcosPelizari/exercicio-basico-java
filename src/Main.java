@@ -7,8 +7,8 @@ public class Main {
     public static void main(String[] args) {
         InputScanner inputScanner = new InputScanner();
         Exercicio exercicio = new Exercicio(inputScanner);
-//        exercicio.exercicio09();
-        System.out.println(exercicio.exercicio12());
+        System.out.println(exercicio.exercicio15());
+        exercicio.fecharScanner();
 
     }
 
