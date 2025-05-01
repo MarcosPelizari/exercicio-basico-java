@@ -223,6 +223,14 @@ public class Exercicio {
         return triangulo.tipoTriangulo();
     }
 
+    public int exercicio17() {
+        int fahrenheit = inputScanner.lerInteiro("Digite um valor inteiro: ");
+
+        int celsus = (5 * (fahrenheit - 32)/ 9);
+
+        return celsus;
+    }
+
     public void fecharScanner() {
         inputScanner.fecharScanner();
     }
