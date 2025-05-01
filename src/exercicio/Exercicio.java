@@ -281,6 +281,7 @@ public class Exercicio {
         return mensagem.toString();
     }
 
+
     public void fecharScanner() {
         inputScanner.fecharScanner();
     }
