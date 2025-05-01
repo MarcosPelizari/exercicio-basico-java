@@ -1,13 +1,42 @@
 # 📚 Exercícios de Java para Prática
 
 ## Sobre o Repositório
-Este repositório foi criado para salvar uma lista de exercícios que utilizei para treinar e revisar conceitos básicos e fundamentais da linguagem **Java**.
+Este repositório contém uma coleção de **20 exercícios práticos** desenvolvidos em **Java** para revisar e aprimorar conceitos fundamentais da linguagem. Cada exercício aborda diferentes aspectos da programação, como entrada/saída, estruturas condicionais, laços, manipulação de strings e cálculos matemáticos.
+
+Os exercícios utilizam uma classe personalizada `InputScanner` para permitir que o usuário insira valores diretamente no terminal, eliminando a necessidade de alterar variáveis no código. Isso torna os exercícios interativos e fáceis de testar.
 
 ![Java](https://img.shields.io/badge/-Java-007396?style=flat-square&logo=java)
 ![Status](https://img.shields.io/badge/Status-Em%20Andamento-green?style=flat-square)
 
+## Estrutura do Projeto
+O projeto está organizado em pacotes para manter o código modular e bem estruturado:
+
+- **`exercicio`**: Contém a classe principal `Exercicio`, que implementa os 20 exercícios, e a classe `InputScanner`, responsável por gerenciar a entrada de dados pelo terminal.
+- **`service`**: Inclui a classe `Triangulo` e `Pagamento`, usada no exercício 16 e 12, respectivamente.
+- **`Main.java`**: Arquivo principal que permite testar qualquer exercício alterando o número do exercício chamado no método `main`.
+
+## Como Executar
+Para testar os exercícios, siga estas etapas:
+
+1. **Pré-requisitos**:
+    - Java Development Kit (JDK) 8 ou superior instalado.
+    - Um terminal ou IDE (como IntelliJ IDEA, Eclipse ou VS Code) para compilar e executar o código.
+
+2**Testando um Exercício**:
+    - Abra o arquivo `Main.java`.
+    - No método `main`, altere o número do exercício que deseja testar. Por exemplo, para executar o exercício 19:
+      ```java
+      System.out.println(exercicio.exercicio19());
+      ```
+    - Execute novamente com `java Main`.
+    - Siga as instruções no terminal para inserir os valores solicitados (ex.: números inteiros, decimais, etc.).
+
+3**Entrada de Dados**:
+    - Todos os exercícios usam a classe `InputScanner` para leitura de entrada via terminal.
+    - A classe trata erros de entrada (ex.: valores inválidos) e solicita nova entrada até que um valor válido seja fornecido, com um limite de 3 tentativas.
+
 ## Lista de Exercícios
-Aqui estão os 22 exercícios que usei para praticar diferentes aspectos da programação em Java:
+Aqui estão os 20 exercícios que usei para praticar diferentes aspectos da programação em Java:
 
 | **Nº** | **Descrição**                                                                                   |
 |--------|-------------------------------------------------------------------------------------------------|
@@ -31,5 +60,8 @@ Aqui estão os 22 exercícios que usei para praticar diferentes aspectos da prog
 | 18     | Calcule em quantos anos Francisco (1,50m, cresce 2cm/ano) será mais alto que Sara (1,10m, cresce 3cm/ano). |
 | 19     | Imprima a tabuada de 1 a 10.                                                                    |
 | 20     | Receba um valor inteiro e imprima sua tabuada.                                                  |
-| 21     | Calcule o salário líquido de um professor com base no valor da hora aula, número de aulas e desconto do INSS. |
-| 22     | Calcule os litros de combustível gastos em uma viagem (carro faz 12km/L). Fórmula: `distância = tempo x velocidade`, `litros = distância / 12`. |
+
+
+## Características do Projeto
+- **Entrada Interativa**: Todos os exercícios utilizam a classe `InputScanner`, que permite ao usuário inserir dados diretamente no terminal, com tratamento de erros para entradas inválidas (ex.: letras em vez de números).
+- **Modularidade**: O código está organizado em pacotes (`exercicio`, `service` e `scanner`), separando a lógica dos exercícios, entrada de dados e funcionalidades específicas (como validação de triângulos).
