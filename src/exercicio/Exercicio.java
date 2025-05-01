@@ -2,6 +2,7 @@ package exercicio;
 
 import scanner.InputScanner;
 import service.Pagamento;
+import service.Triangulo;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -10,7 +11,6 @@ import java.time.LocalDate;
 public class Exercicio {
 
     private InputScanner inputScanner;
-    private Pagamento pagamento;
 
     public Exercicio(InputScanner inputScanner) {
         this.inputScanner = inputScanner;
@@ -211,6 +211,24 @@ public class Exercicio {
         int dayMonth = date.getDayOfMonth();
 
         return String.format("Você já viveu %d anos, %d meses e %d dias", year, month,dayMonth);
+    }
+
+    public String exercicio16() {
+        int ladoUmTriangulo = inputScanner.lerInteiro("Por favor informe o primeiro lado do triangulo: ");
+        int ladoDoisTriangulo = inputScanner.lerInteiro("Por favor informe o segundo lado do triangulo: ");
+        int ladoTresTriangulo = inputScanner.lerInteiro("Por favor informe o ultimo lado do triangulo: ");
+
+        Triangulo triangulo = new Triangulo(ladoUmTriangulo, ladoDoisTriangulo, ladoTresTriangulo);
+
+        return triangulo.tipoTriangulo();
+    }
+
+    public int exercicio17() {
+        int fahrenheit = inputScanner.lerInteiro("Digite um valor inteiro: ");
+
+        int celsus = (5 * (fahrenheit - 32)/ 9);
+
+        return celsus;
     }
 
     public void fecharScanner() {
