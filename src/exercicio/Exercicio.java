@@ -223,6 +223,65 @@ public class Exercicio {
         return triangulo.tipoTriangulo();
     }
 
+    public int exercicio17() {
+        int fahrenheit = inputScanner.lerInteiro("Digite um valor em Fahrenheit: ");
+
+        int celsus = (5 * (fahrenheit - 32)/ 9);
+
+        return celsus;
+    }
+
+    public String exercicio18() {
+        double francisco = 1.50;
+        double crescimentoFrancisco = 0.02;
+        double sara = 1.10;
+        double crescimentoSara = 0.03;
+
+        double ano = (francisco - sara) / (crescimentoFrancisco - crescimentoSara);
+        int anosNecessarios = (int) Math.ceil(ano);
+
+        double franciscoAlturaFinal = francisco * crescimentoFrancisco * anosNecessarios;
+        double saraAlturaFinal = sara * crescimentoSara * anosNecessarios;
+
+        String mensagem = String.format(
+                "Sara vai demorar %s anos para ficar maior que Francisco.\nEla vai ficar com %.2f metros e ele com %.2f metros.\nNão vão parar de crescer?",
+                anosNecessarios, saraAlturaFinal, franciscoAlturaFinal);
+
+        return mensagem;
+    }
+
+    public String exercicio19() {
+        StringBuilder mensagem = new StringBuilder();
+        mensagem.append("Vamos ver a tabuada:\n ");
+
+        for (int i = 1; i < 11; i++) {
+            mensagem.append(String.format("Tabuada do número %d: \n", i));
+
+            for (int j = 0; j < 11; j++) {
+                mensagem.append(String.format("%d * %2d = %3d", i, j, i*j));
+                if (j < 10) {
+                mensagem.append("\n");
+                }
+            }
+            mensagem.append("\n-----------------------\n");
+        }
+
+        return mensagem.toString();
+    }
+
+    public String exercicio20() {
+        int numero = inputScanner.lerInteiro("Por favor informe um número inteiro para calcular a tabuada: ");
+        StringBuilder mensagem = new StringBuilder();
+        for (int i = 0; i < 11; i++) {
+            mensagem.append(String.format("%d * %d = %d", numero, i, numero * i));
+            if (i < 10)
+                mensagem.append("\n");
+        }
+
+        return mensagem.toString();
+    }
+
+
     public void fecharScanner() {
         inputScanner.fecharScanner();
     }
